@@ -6,9 +6,9 @@ from db.models import Genre, Actor
 
 
 def main() -> QuerySet:
-    genres_to_create = ["Western", "Action", "Dramma"]
+    genres_to_create = [("Western",), ("Action",), ("Drama",)]
 
-    for genre in genres_to_create:
+    for genre, in genres_to_create:
         Genre.objects.create(name=genre)
 
     actors_to_create = [
@@ -32,7 +32,3 @@ def main() -> QuerySet:
     Genre.objects.filter(name="Action").delete()
     Actor.objects.filter(first_name="Scarlett").delete()
     return Actor.objects.filter(last_name="Smith").order_by("first_name")
-
-
-if __name__ == "__main__":
-    main()
